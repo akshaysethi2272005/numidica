@@ -9,7 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dgram": "^1.0.1",
+    "dns": "^0.2.2",
+    "email-existence": "^0.1.6",
+    "firebase": "^9.9.2",
+    "net": "^1.0.2",
     "next": "12.2.4",
+    "nodemailer": "^6.7.8",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
