@@ -1,15 +1,14 @@
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
+import Nav from "./nav";
+
 const MainPage = () => {
-    const rr = useRouter();
+  const r = useRouter();
   return (
     <div>
-    
-        {/* <button onClick={() => {
-            sessionStorage.clear()
-            rr.reload();
-        }}>Logout</button> */}
+      <Nav />
+      Main Page
     </div>
-  )
-}
+  );
+};
 
-export default MainPage
+export default MainPage;

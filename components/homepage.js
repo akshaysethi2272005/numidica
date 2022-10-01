@@ -1,128 +1,31 @@
-import styles from '../styles/Home.module.css'
-import Nav from './nav';
-import Auth from './firebase/auth/login';
-import { useState , useEffect } from 'react';
-import { useRouter } from 'next/router'
-import CreateUser from './firebase/auth/create';
+import styles from "../styles/Home.module.css";
+import Nav from "./nav";
+import { signIn } from "../Firebase/auth";
+
 export default function HomePage() {
-  const [user, setuser] = useState([]);
-  const [a1, seta1] = useState(false);
-  const [a2, seta2] = useState("");
-  const [a3, seta3] = useState("");
-  const r = useRouter();
-  useEffect(() => {
-    const UserData = async () => {
-      const u = await Auth();
-      setuser(u);
-      console.log(u)
-    };
-    UserData();
-  },[])
   return (
     <div>
-      <Nav/>
-      <div id='home' className={styles.bg}> 
+      <Nav />
+      <div id="home" className={styles.bg}>
         <div className={styles.aligndata}>
           <p className={styles.para}>
             Predict Yourself And Your Future Using Numerology
           </p>
-          <p className={styles.para}>
-            Numidica
-          </p>
+          <p className={styles.para}>Numidica</p>
         </div>
       </div>
-      <div id='login' className={styles.bg2}>
-        <div id='as1' style={{"display":"flex"}} className={styles.authstack} >
-          <p className={styles.hp}>Login</p>
-          <label htmlFor='email-input'>Email</label>
-          <input required type="email" id='email-input'/>
-          <label htmlFor='email-password'>password</label>
-          <input required type="password" id='email-password'/>
-          <button type="submit" id='submit' onClick={() => {
-            const email1 = document.getElementById("email-input").value;
-            const password1 = document.getElementById("email-password").value;
-            if(email1 == "" || password1 == ""){
-              alert("fill all the values");
-            }else{
-              user.map(data => {
-                if(data.email == email1 && data.password == password1){
-                  sessionStorage.setItem("email",data.email);
-                  sessionStorage.setItem("name",data.name);
-                  r.reload();
-                }
-              })
-            }
-          }}>submit</button>
-          <p className={styles.rp} onClick={() => {
-            document.getElementById("as1").style.display = "none"
-            document.getElementById("as2").style.display = "flex"
-          }}>Create Account</p>
-        </div>
-        <div className={styles.authstack} id='as2' style={{"display":"none"}}>
-          <p className={styles.hp}>Create Account</p>
-          <label htmlFor='name-input1'>Name</label>
-          <input required type="name" id='name-input1'/>
-          <label htmlFor='email-input2'>Email</label>
-          <input required type="email" id='email-input2'/>
-          <label htmlFor='email-password2'>password</label>
-          <input required type="password" id='email-password2'/>
-          <label htmlFor='remail-password2'>Re-confirm Password</label>
-          <input required type="password" id='remail-password2'/>
-          <button type="submit" id='submit' onClick={() => {
-            const em1 = document.getElementById("name-input1").value;
-            const em2 = document.getElementById("email-input2").value;
-            const em3 = document.getElementById("email-password2").value;
-            const em4 = document.getElementById("remail-password2").value;
-            if(em1 != "" || em2 != "" || em3 != "" || em4 != "" ){
-              if(em3 == em4){
-                user.map(ele => {
-                  console.log(ele)
-                  console.log(em2)
-                  if(ele.email == em2){
-                    console.log(a1)
-                    seta1(true)
-                    console.log(a1)
-                  }
-                })
-                if(a1 == true){
-                  alert("email exists")
-                  r.reload()
-                }else{
-                  console.log(a1)
-                  // fetch(`https://valid-email-api.herokuapp.com/`,{
-                  //       body: JSON.stringify({
-                  //         "email":em2,
-                  //         "pid":"karna"
-                  //       }),
-                  //       headers: {
-                  //         'Content-Type': 'application/json',
-                  //       },
-                  //       method: 'POST'
-                  //     }
-
-                  //   ).then(res => res.json()).then(data => {
-                  //     if(data.valid == false){
-                  //       alert("Invalid Email")
-                  //     }else{
-                  //       console.log(data.valid)
-                  //       CreateUser(em1,em2,em3)
-                  //       alert("account created")
-                  //     }
-                  //   })
-                }
-              }else{
-                alert("password don't matched !")
-              }
-            }else{
-              alert("fill all the values");
-            }
-          }}>submit</button>
-          <p className={styles.rp} onClick={() => {
-            document.getElementById("as2").style.display = "none"
-            document.getElementById("as1").style.display = "flex"
-          }}>login</p>
-        </div>
+      <div id="login" className={styles.bg2}>
+        <button
+          type="button"
+          onClick={signIn}
+          className="hover:shadow-md rounded-lg hover:shadow-blue-500/50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-white font-medium text-sm px-5 py-2.5 text-center inline-flex items-center"
+        >
+          <svg viewBox="0 0 488 512" width="1rem">
+            <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
+          </svg>
+          <span className="px-2">Sign in with Google</span>
+        </button>
       </div>
     </div>
-  )
+  );
 }

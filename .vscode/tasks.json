@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run",
+      "command": "npm run dev",
+      "type": "shell"
+    },
+    {
+      "label": "Commit To Git",
+      "command": "git add .;git commit -m '${input:commitMessage}';",
+      "type": "shell"
+    },
+    {
+      "label": "Push Local Commits To GitHub",
+      "command": "git push origin master",
+      "type": "shell"
+    },
+    {
+      "label": "Build",
+      "command": "npm run build; npm run export",
+      "type": "shell"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "commitMessage",
+      "description": "Enter The Commit Message",
+      "type": "promptString"
+    }
+  ]
+}
