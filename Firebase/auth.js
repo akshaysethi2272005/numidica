@@ -9,9 +9,9 @@ const signIn = async () => {
   const result = await signInWithPopup(auth, provider).catch((error) => {
     alert(error.message);
   });
-  const user = result.user;
   // Run On First Sign In
   try {
+    const user = result.user;
     const docRef = doc(db, "users", user.uid);
     const docSnap = await getDoc(docRef);
 
@@ -20,15 +20,17 @@ const signIn = async () => {
     } else {
       await setDoc(docRef, {
         todoList: [],
-        DOB: "08-NOV-2004",
-        Address: "",
       });
     }
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 
-  return user;
+  try{
+    return user;
+  } catch(e){
+    return;
+  }
 };
 
 const signOut = async () => {
