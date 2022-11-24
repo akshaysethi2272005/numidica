@@ -1,4 +1,4 @@
-import { initializeFirebase } from "../Firebase";
+import { initializeFirebase } from "../Firebase/index";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {

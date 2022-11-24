@@ -6,7 +6,6 @@ const readUser = async (userID) => {
     const querysnap = await getDoc(doc(fdb, "users", userID));
     if (querysnap.exists()) {
       const conditionalData_SignUp = querysnap.data();
-      console.log(conditionalData_SignUp);
       const yui = conditionalData_SignUp ? conditionalData_SignUp.todoList : [];
       const data = [];
       yui.map((ele) => {

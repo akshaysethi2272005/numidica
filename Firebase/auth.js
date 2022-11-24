@@ -7,7 +7,7 @@ const provider = new GoogleAuthProvider();
 const signIn = async () => {
   const auth = getAuth();
   const result = await signInWithPopup(auth, provider).catch((error) => {
-    alert(error.message);
+    alert("There is Problem While Login or creating the account. Please Try again");
   });
   try {
     const user = result.user;

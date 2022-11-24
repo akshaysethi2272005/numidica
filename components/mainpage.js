@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { signOut, getAuth, signIn } from "../Firebase/auth";
 import updateUserData from "../Firebase/firestore";
 import readUser from "../Firebase/read";
-import { async } from "@firebase/util";
 import delUserData from "../Firebase/del";
 const MainPage = () => {
   const r = useRouter();
@@ -77,23 +76,12 @@ const MainPage = () => {
         </div>
       </div>
       <p className={styless.history}>Records</p>
-      <div className={styless.hsible}>
-        {/* {
-        readUser(ip1).then(data => {
-          data.todoList.map(e => (
-          <div id={data.id} className={styless.select2}>
-            <p className={styless.his1}>{data.name}</p>
-            <p className={styless.his1}>{data.dob}</p>
-            <button className={stylesss.btns2} style={{marginLeft:"15px",marginTop:"10px"}}>Delete</button>
-            <button className={stylesss.btns3} style={{marginLeft:"15px",marginTop:"10px"}}>View</button>
-          </div>
-        ))})
-      } */}
-        <div>
+
+        <div className={styless.viewbn}>
           {ik.map((data, i) => (
             <div id={data.id} key={i} className={styless.select2}>
               <p className={styless.his1}>{data.name}</p>
-              <p className={styless.his1}>{data.dob}</p>
+              <p className={styless.his2}>{data.dob}</p>
               <button
                 id={data.id}
                 className={stylesss.btns2}
@@ -112,26 +100,31 @@ const MainPage = () => {
                 Delete
               </button>
               <button
+                id={data.id}
                 className={stylesss.btns3}
                 style={{ marginLeft: "15px", marginTop: "10px" }}
                 onClick={(o) => {
                   const yuid = o.target.id;
-
-                  const buyq = ik.map((u) => {
-                    if (u.id != yuid) {
+                  let buyq = ik.filter((u) => {
+                    if (u.id == yuid) {
                       return u;
                     }
                   });
-                  const payh = "/" + buyq[0].id;
-                  const nki1 = buyq[0].id;
-                  const nki2 = buyq[0].name;
-                  const nki3 = buyq[0].dob;
+                  let payh = "/" + buyq[0].id;
+                  let nki1 = buyq[0].id;
+                  let nki2 = buyq[0].name;
+                  let nki3 = buyq[0].dob.split("-");
+                  let year = nki3[0]
+                  let month = nki3[1]
+                  let date = nki3[2]
                   Router.push({
                     pathname: payh,
                     query: {
                       nki1,
                       nki2,
-                      nki3,
+                      year,
+                      month,
+                      date
                     },
                   });
                 }}
@@ -141,21 +134,7 @@ const MainPage = () => {
             </div>
           ))}
         </div>
-        {/* <div>
-          {
-            ik.forEach(data => {
-              return (
-              <div id={data.id} className={styless.select2}>
-                <p className={styless.his1}>{data.name}</p>
-                <p className={styless.his1}>{data.dob}</p>
-                <button className={stylesss.btns2} style={{marginLeft:"15px",marginTop:"10px"}}>Delete</button>
-                <button className={stylesss.btns3} style={{marginLeft:"15px",marginTop:"10px"}}>View</button>
-              </div>
-            )})
-          }
-        </div> */}
       </div>
-    </div>
   );
 };
 export default MainPage;

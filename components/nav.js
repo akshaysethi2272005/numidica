@@ -60,12 +60,23 @@ const Nav = () => {
       <ul className={nav ? style.active : style.lt2} id="slide">
         {!user && (<li>
           <Link href="/#home" scroll={true}>
-            <a>Home</a>
+            <span>Home</span>
           </Link>
         </li>)}
         {!user && (
           <li>
-            <a onClick={signIn} href="/#login">Login / Create</a>
+            <span onClick={signIn} href="/#login">Login / Create</span>
+          </li>
+        )}
+        {user && (
+          <li>
+            <Link href="/" scroll={true}>
+              <button
+                type="button"
+                className={style.btns1}
+              >Home
+              </button>
+            </Link>
           </li>
         )}
         {user && (
@@ -76,6 +87,17 @@ const Nav = () => {
               className={style.btns1}
             >Logout
             </button>
+          </li>
+        )}
+        {user && (
+          <li>
+            <Link href="/settings" scroll={true}>
+              <button
+                type="button"
+                className={style.btns1}
+              >Settings
+              </button>
+            </Link>
           </li>
         )}
         {/* Test Remove */}
