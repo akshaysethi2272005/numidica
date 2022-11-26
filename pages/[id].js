@@ -8,9 +8,9 @@ export default function Home() {
   const [user, setUser] = useState(null);
   const routernet = useRouter();
   const {
-    query:{nki1,nki2,year,month ,date},
+    query:{nki1,nki2,year,month ,date,gender},
   } = routernet;
-  const datareq = {nki1,nki2,year,month ,date};
+  const datareq = {nki1,nki2,year,month ,date , gender};
   const [apiconfig, setapiconfig] = useState(null);
   const [isLoading, setLoading] = useState(false)
   useEffect(() => {
@@ -23,7 +23,8 @@ export default function Home() {
         "name":nki2,
         "date":date,
         "month":month,
-        "year":year
+        "year":year,
+        "gender":gender
     })
   }).then(ras => ras.json()).then(rsd => {
     setapiconfig(rsd[0])
@@ -287,10 +288,10 @@ export default function Home() {
               <p className={ji.prophead}>Planes Prediction from Chart</p>
               <div className={ji.dok}>{apiconfig.plane}</div>
             </div>
-            <div className={ji.dok}>
+            { apiconfig.fact && <div className={ji.dok}>
               <p className={ji.prophead}>Facts</p>
               <div className={ji.dok}>{apiconfig.fact}</div>
-            </div>
+            </div>}
             <div className={ji.dok}>
               <p className={ji.prophead}>Marriage Prediction from Chart</p>
               <div className={ji.dok}>{apiconfig.marriage}</div>

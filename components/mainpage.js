@@ -46,29 +46,45 @@ const MainPage = () => {
             className={styless.inpse}
           />
           <br />
-          <input id="dkio2" type="date" className={styless.inpse} />
+          <div className={styless.datetime}>
+            <input id="dkio3" placeholder="year" type="number" className={styless.inpse} /><br />
+            <input id="dkio4" placeholder="month" type="number" className={styless.inpse} /><br />
+            <input id="dkio5" placeholder="date" type="number" className={styless.inpse} /><br />
+          </div>
+          <select id="dkio6" placeholder="Enter Gender" type="option"  className={styless.inpse}>
+            <option className={styless.inpse} value="male">Male</option>
+            <option className={styless.inpse} value="female">Female</option>
+          </select>
           <br />
           <button
             className={stylesss.btns1}
             style={{ marginLeft: "15px", marginTop: "10px" }}
             onClick={() => {
               const dkio1 = document.getElementById("dkio1").value;
-              const dkio2 = document.getElementById("dkio2").value;
+              const dkio3 = document.getElementById("dkio3").value;
+              const dkio4 = document.getElementById("dkio4").value;
+              const dkio5 = document.getElementById("dkio5").value;
+              const dkio6 = document.getElementById("dkio6").value;
               const iid = Math.random().toString(16).slice(2);
-              if (dkio1 === "" || dkio2 === "") {
+              if (dkio1 === "" ||  dkio3 === "" || dkio4 === "" || dkio5 === "" || dkio6 === "") {
                 alert("fill the values");
               } else {
+                const dobyear = dkio3.toString() + "-" + dkio4.toString() + "-" + dkio5.toString();
                 const juio = {
                   id: iid,
                   name: dkio1,
-                  dob: dkio2,
+                  dob: dobyear,
+                  gender : dkio6
                 };
                 const ghy = ik.concat(juio);
                 updateUserData(user, ghy);
                 setik(ghy);
               }
               document.getElementById("dkio1").value = "";
-              document.getElementById("dkio2").value = "";
+              document.getElementById("dkio3").value = "";
+              document.getElementById("dkio4").value = "";
+              document.getElementById("dkio5").value = "";
+              document.getElementById("dkio6").value = "";
             }}
           >
             Add
@@ -82,6 +98,7 @@ const MainPage = () => {
             <div id={data.id} key={i} className={styless.select2}>
               <p className={styless.his1}>{data.name}</p>
               <p className={styless.his2}>{data.dob}</p>
+              <p className={styless.his2}>{data.gender}</p>
               <button
                 id={data.id}
                 className={stylesss.btns2}
@@ -117,6 +134,7 @@ const MainPage = () => {
                   let year = nki3[0]
                   let month = nki3[1]
                   let date = nki3[2]
+                  let gender = buyq[0].gender;
                   Router.push({
                     pathname: payh,
                     query: {
@@ -124,7 +142,8 @@ const MainPage = () => {
                       nki2,
                       year,
                       month,
-                      date
+                      date,
+                      gender
                     },
                   });
                 }}

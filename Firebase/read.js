@@ -9,7 +9,7 @@ const readUser = async (userID) => {
       const yui = conditionalData_SignUp ? conditionalData_SignUp.todoList : [];
       const data = [];
       yui.map((ele) => {
-        var kjp = { id: ele.id, name: ele.name, dob: ele.dob };
+        var kjp = { id: ele.id, name: ele.name, dob: ele.dob ,gender : ele.gender};
         data.push(kjp);
       });
       return data;
