@@ -46,12 +46,8 @@ const MainPage = () => {
             className={styless.inpse}
           />
           <br />
-          <div className={styless.datetime}>
-            <input id="dkio3" placeholder="year" type="number" className={styless.inpse} /><br />
-            <input id="dkio4" placeholder="month" type="number" className={styless.inpse} /><br />
-            <input id="dkio5" placeholder="date" type="number" className={styless.inpse} /><br />
-          </div>
-          <select id="dkio6" placeholder="Enter Gender" type="option"  className={styless.inpse}>
+            <input id="dkio2" placeholder="year" type="date" className={styless.inpse} /><br />
+          <select id="dkio3" placeholder="Enter Gender" type="option"  className={styless.inpse}>
             <option className={styless.inpse} value="male">Male</option>
             <option className={styless.inpse} value="female">Female</option>
           </select>
@@ -61,30 +57,25 @@ const MainPage = () => {
             style={{ marginLeft: "15px", marginTop: "10px" }}
             onClick={() => {
               const dkio1 = document.getElementById("dkio1").value;
+              const dkio2 = document.getElementById("dkio2").value;
               const dkio3 = document.getElementById("dkio3").value;
-              const dkio4 = document.getElementById("dkio4").value;
-              const dkio5 = document.getElementById("dkio5").value;
-              const dkio6 = document.getElementById("dkio6").value;
               const iid = Math.random().toString(16).slice(2);
-              if (dkio1 === "" ||  dkio3 === "" || dkio4 === "" || dkio5 === "" || dkio6 === "") {
+              if (dkio1 === "" ||  dkio3 === "" || dkio2 === "") {
                 alert("fill the values");
               } else {
-                const dobyear = dkio3.toString() + "-" + dkio4.toString() + "-" + dkio5.toString();
                 const juio = {
                   id: iid,
                   name: dkio1,
-                  dob: dobyear,
-                  gender : dkio6
+                  dob: dkio2,
+                  gender : dkio3
                 };
                 const ghy = ik.concat(juio);
                 updateUserData(user, ghy);
                 setik(ghy);
               }
               document.getElementById("dkio1").value = "";
+              document.getElementById("dkio2").value = "";
               document.getElementById("dkio3").value = "";
-              document.getElementById("dkio4").value = "";
-              document.getElementById("dkio5").value = "";
-              document.getElementById("dkio6").value = "";
             }}
           >
             Add
