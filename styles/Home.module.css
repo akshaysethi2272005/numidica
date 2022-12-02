@@ -91,6 +91,54 @@
   cursor: pointer;
   color: white;
 }
+.uses{
+  background-color: #131313;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.subuse{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.texter{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  padding: 10px 20px;
+  box-shadow:  2px 2px 7px 0px rgb(71, 71, 71);
+  background-color:darkcyan;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+.subuse ul li {
+  padding: 40px 25px;
+  box-shadow:  2px 2px 7px 0px rgb(59, 59, 59);
+  background-color: #fff;
+  border-radius: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+.todaychart{
+  height: 100vh;
+  background-color: rgb(11, 55, 138);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.chart{
+  height: 400px;
+  width: 90%;
+  background-color: #fff;
+  box-shadow:  2px 2px 7px 0px rgb(183, 183, 183);
+  border-radius: 20px;
+}
 @media (max-width:1020px){
   .aligndata{
     align-items: flex-start;
@@ -112,5 +160,13 @@
     background-color: slateblue;
     margin-right:10px;
     border-right: 4px solid white;
+  }
+  .texter{
+    font-size: 16px;
+    margin: 5px;
+  }
+  .subuse ul li {
+    padding: 35px 15px;
+    margin: 10px;
   }
 }

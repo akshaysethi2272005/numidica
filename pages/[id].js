@@ -273,7 +273,7 @@ export default function Home() {
               {apiconfig.predict["9999"]  && <div className={ji.dok}><i className={ji.bhj}>9999</i>: {apiconfig.predict["9999"]}</div>}
             </div>
             <div className={ji.dok}>
-              <p className={ji.prophead}>Properties of Not number present in above Chart</p>
+              <p className={ji.prophead}>Properties of number not present in above Chart</p>
               {apiconfig.non["1"] && <div className={ji.dok}><i className={ji.bhj}>1</i>: {apiconfig.non["1"]}</div>}
               {apiconfig.non["2"] && <div className={ji.dok}><i className={ji.bhj}>2</i>: {apiconfig.non["2"]}</div>}
               {apiconfig.non["3"] && <div className={ji.dok}><i className={ji.bhj}>3</i>: {apiconfig.non["3"]}</div>}
